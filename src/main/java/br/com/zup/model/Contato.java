@@ -9,18 +9,23 @@ import java.util.Objects;
 
 @Data
 @AllArgsConstructor//Construtor com todos argumentos
-@Entity(name = "contatos")
+@Entity
+@Table(name = "contatos")
 public class Contato {
 
     @Id
-    @Column(name = "emails")
     private String email;
 
-    @Column(name = "nome-completo", length = 120)
+    @Column(name = "nome_completo", length = 120)
     private String nomeCompleto;
+
+    private String telefone;
 
     @ManyToMany
     private List<Produto> produto;
+
+    public Contato() {
+    }
 
     @Override
     public boolean equals(Object o) {
