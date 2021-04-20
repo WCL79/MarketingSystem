@@ -13,7 +13,6 @@ import java.util.Objects;
 public class Contato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emails")
     private String email;
 
