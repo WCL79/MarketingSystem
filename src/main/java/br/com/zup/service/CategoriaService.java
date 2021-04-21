@@ -1,21 +1,19 @@
 package br.com.zup.service;
 
-
-import br.com.zup.mapper.CategoriaMapper;
 import br.com.zup.model.Categoria;
 import br.com.zup.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 
 @Service
 public class CategoriaService {
 
+
     private final CategoriaRepository categoriaRepository;
 
-    @Autowired
-    private CategoriaMapper categoriaMapper;
 
     @Autowired
     public CategoriaService(CategoriaRepository categoriaRepository) {
@@ -26,6 +24,11 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
     }
 
-
-
+    public Categoria pesquisarCategoriaPorNome(Categoria categoria) {
+        Optional<Categoria> optionalCategoria = categoriaRepository.findByNome(categoria.getNome());
+        if(optionalCategoria.isEmpty()){
+            return salvar(categoria);
+        }
+        return optionalCategoria.get();
+    }
 }
