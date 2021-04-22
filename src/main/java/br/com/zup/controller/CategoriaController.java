@@ -30,6 +30,4 @@ public class CategoriaController {
         Categoria categoria = categoriaService.salvar(entradaCategoriaDTO.converterDTO());
         return SaidaCategoriaDTO.converterModeloParaDTO(categoria);
     }
-
-
 }

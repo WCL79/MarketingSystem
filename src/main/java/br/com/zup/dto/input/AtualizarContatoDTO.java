@@ -11,16 +11,16 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor
-public class EntradaContatoDTO {
+public class AtualizarContatoDTO {
 
     private String nome;
     private String email;
     private String telefone;
     private List<String> produtos;
 
-    public Contato converterDtoParaModelo() {
+    public Contato converterDtoParaModelo(Integer id) {
         return new Contato(
-                null,
+                id,
                 email,
                 nome,
                 telefone,
