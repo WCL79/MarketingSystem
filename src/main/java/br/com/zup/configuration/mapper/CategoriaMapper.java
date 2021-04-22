@@ -1,4 +1,4 @@
-package br.com.zup.mapper;
+package br.com.zup.configuration.mapper;
 
 import br.com.zup.dto.input.EntradaCategoriaDTO;
 import br.com.zup.model.Categoria;
