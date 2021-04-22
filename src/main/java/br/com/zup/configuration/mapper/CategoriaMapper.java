@@ -15,7 +15,7 @@ public class CategoriaMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Categoria converterInputDTOParaModel(EntradaCategoriaDTO entradaCategoriaDTO){
-        return modelMapper.map(entradaCategoriaDTO, Categoria.class);
-    }
+    //public Categoria converterInputDTOParaModel(EntradaCategoriaDTO entradaCategoriaDTO){
+        //return modelMapper.map(entradaCategoriaDTO, Categoria.class);
+    //}
 }

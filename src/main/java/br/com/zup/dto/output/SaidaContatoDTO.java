@@ -40,9 +40,7 @@ public class SaidaContatoDTO {
 
     public static List<SaidaContatoDTO> converterListaModeloParaListaDto(Iterable<Contato> contatos) {
         List<SaidaContatoDTO> dtoSaida = new ArrayList<>();
-        contatos.forEach(contato -> {
-            dtoSaida.add(new SaidaContatoDTO(contato.getId(), contato.getNome(),
-                    contato.getEmail(), contato.getTelefone()));});
+        contatos.forEach(contato -> { dtoSaida.add(converterDTOParaModelo(contato));});
         return dtoSaida;
     }
 }
