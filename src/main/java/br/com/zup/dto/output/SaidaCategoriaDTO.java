@@ -6,6 +6,8 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor//Construtor com todos argumentos
@@ -17,7 +19,18 @@ public class SaidaCategoriaDTO {
     private String nome;
 
     public static SaidaCategoriaDTO converterModeloParaDTO(Categoria categoria){
-        return new SaidaCategoriaDTO(categoria.getId(), categoria.getNome());
+        return new SaidaCategoriaDTO(
+                categoria.getId(),
+                categoria.getNome()
+        );
+    }
+
+    public static List<SaidaCategoriaDTO> gerarListaDeDto(List<Categoria> categorias) {
+        List<SaidaCategoriaDTO> dtos = new ArrayList<>();
+        for (Categoria categoria : categorias) {
+            dtos.add(converterModeloParaDTO(categoria));
+        }
+        return dtos;
     }
 
 }

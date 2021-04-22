@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -29,11 +30,19 @@ public class ProdutoService {
     }
 
     private List<Categoria> criarListaDeCategoriaParaRegistarCasoNomeInexistente(List<Categoria> categorias) {
-        List<Categoria> categoriasAdcionarNoProduto = new ArrayList<>();
+        List<Categoria> categoriasADD = new ArrayList<>();
         for (Categoria categoria : categorias) {
-            categoriasAdcionarNoProduto.add(categoriaService.pesquisarCategoriaPorNome(categoria));
+            categoriasADD.add(categoriaService.pesquisarCategoriaPorNome(categoria));
         }
-        return categoriasAdcionarNoProduto;
+        return categoriasADD;
     }
 
+    public Produto procurarProdutoPorNome(String nome) {
+        Optional<Produto> optionalProduto = produtoRepository.findByNome(nome);
+        if (optionalProduto.isEmpty()) {
+            throw new RuntimeException("Não existe produto com nome " + nome);
+        }
+        return optionalProduto.get();
+    }
 }
+

@@ -1,5 +1,6 @@
 package br.com.zup.controller;
 
+import br.com.zup.configuration.mapper.CategoriaMapper;
 import br.com.zup.dto.input.EntradaCategoriaDTO;
 import br.com.zup.dto.output.SaidaCategoriaDTO;
 import br.com.zup.model.Categoria;
@@ -18,6 +19,9 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaService categoriaService;
+
+    @Autowired
+    private CategoriaMapper categoriaMapper;
 
 
     @PostMapping

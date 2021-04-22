@@ -10,18 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class SaidaProdutoDTO {
 
     private Integer id;
     private String nome;
-    private List<String> categorias;
+    private List<SaidaCategoriaDTO> categorias;
 
-    public static SaidaProdutoDTO converterDTOParaModel(Produto produto){
-        List<String> categoriasNomes = new ArrayList<>();
-        produto.getCategorias().stream().forEach(categoria -> {
-            categoriasNomes.add(categoria.getNome()); });
+    public SaidaProdutoDTO(Integer id, String nome, List<SaidaCategoriaDTO> categorias) {
+        this.id = id;
+        this.nome = nome;
+        this.categorias = categorias;
+    }
+
+    public SaidaProdutoDTO(Integer id, String nome) {
+    }
+
+    public static SaidaProdutoDTO converterDTOParaModel(Produto produto) {
+        List<SaidaCategoriaDTO> categoriasNomes = SaidaCategoriaDTO.gerarListaDeDto(produto.getCategorias());
         return new SaidaProdutoDTO(produto.getId(), produto.getNome(), categoriasNomes);
     }
 }

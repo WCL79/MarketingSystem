@@ -14,8 +14,8 @@ public class EntradaCategoriaDTO {
     @NotEmpty
     private String nome;
 
-
     public Categoria converterDTO(){
         return new Categoria(null, this.nome);
     }
+
 }
