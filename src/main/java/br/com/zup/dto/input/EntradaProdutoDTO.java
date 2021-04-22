@@ -27,9 +27,7 @@ public class EntradaProdutoDTO {
         List<Categoria> categoriasModelo = new ArrayList<>();
         categorias.stream().forEach(nome -> {
             categoriasModelo.add(
-                    new Categoria(null, nome)
-            );
-        });
+                    new Categoria(null, nome)); });
         return new Produto(null, this.nome, categoriasModelo);
     }
 }
