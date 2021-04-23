@@ -6,6 +6,7 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor//Construtor com todos argumentos
@@ -18,6 +19,7 @@ public class Categoria {
     private Integer id;
 
     @Column(nullable = false)
+    @NotNull(message = "{validacao.nome_obrigatorio}")
     private String nome;
 
     public Categoria() {

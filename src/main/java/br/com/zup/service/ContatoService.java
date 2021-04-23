@@ -1,7 +1,6 @@
 package br.com.zup.service;
 
-import br.com.zup.dto.output.SaidaContatoDTO;
-import br.com.zup.dto.output.SaidaProdutoDTO;
+import br.com.zup.exceptions.EmailDuplicadoExcecao;
 import br.com.zup.model.Contato;
 import br.com.zup.model.Produto;
 import br.com.zup.repositories.ContatoRepository;
@@ -49,7 +48,7 @@ public class ContatoService {
     public Contato procurarContatoPorId(Integer id) {
         Optional<Contato> optionalContato = contatoRepository.findById(id);
         if (optionalContato.isEmpty()) {
-            return optionalContato.orElseThrow( () -> new RuntimeException("Contato com id " + id + " não existe") );
+            return optionalContato.orElseThrow( () -> new EmailDuplicadoExcecao("Contato com id " + id + " não existe") );
         }
         return optionalContato.get();
     }
