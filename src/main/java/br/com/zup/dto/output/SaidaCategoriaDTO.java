@@ -16,6 +16,7 @@ public class SaidaCategoriaDTO {
     @NotNull
     @NotEmpty
     private Integer id;
+    @NotNull(message = "{validacao.nome_obrigatorio}")
     private String nome;
 
     public static SaidaCategoriaDTO converterModeloParaDTO(Categoria categoria){

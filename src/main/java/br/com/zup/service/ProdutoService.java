@@ -1,5 +1,7 @@
 package br.com.zup.service;
 
+import br.com.zup.exceptions.EmailDuplicadoExcecao;
+import br.com.zup.exceptions.ProdutoExistenteException;
 import br.com.zup.model.Categoria;
 import br.com.zup.model.Produto;
 import br.com.zup.repositories.ProdutoRepository;
@@ -40,7 +42,7 @@ public class ProdutoService {
     public Produto procurarProdutoPorNome(String nome) {
         Optional<Produto> optionalProduto = produtoRepository.findByNome(nome);
         if (optionalProduto.isEmpty()) {
-            throw new RuntimeException("Não existe produto com nome " + nome);
+            throw new ProdutoExistenteException("Não existe produto com nome " + nome);
         }
         return optionalProduto.get();
     }

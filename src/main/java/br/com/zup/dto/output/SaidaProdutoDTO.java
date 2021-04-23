@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class SaidaProdutoDTO {
 
     private Integer id;
+    @NotNull(message = "{validacao.nome_obrigatorio}")
     private String nome;
     private List<SaidaCategoriaDTO> categorias;
 
